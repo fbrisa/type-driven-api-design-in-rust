@@ -30,6 +30,13 @@ where
     }
 }
 
+impl<Iter> Progress<Iter> {
+    pub fn with_delims(mut self, delims: (char, char)) -> Self {
+        self.delims = delims;
+        self
+    }
+}
+
 impl<Iter> Iterator for Progress<Iter>
 where
     Iter: Iterator,
@@ -71,12 +78,13 @@ fn expensive_calculation(_n: &i32) {
 }
 
 fn main() {
+    let brkts = ('<', '>');
     // for n in (0..).progress() {
     //     expensive_calculation(&n);
     // }
 
     let v = vec![1, 2, 3];
-    for n in v.iter().progress().with_bound() {
+    for n in v.iter().progress().with_bound().with_delims(brkts) {
         expensive_calculation(n);
     }
 }

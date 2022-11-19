@@ -41,6 +41,9 @@ fn expensive_calculation(_n: &i32) {
 }
 
 fn main() {
+    let x = 1.progress();
+    let y = "blah".progress();
+
     let v = vec![1, 2, 3];
     for n in v.iter().progress() {
         expensive_calculation(n);

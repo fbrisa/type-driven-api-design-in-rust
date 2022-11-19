@@ -1,9 +1,5 @@
 <h3 align="center">"Type-Driven API Design in Rust" by Will Crichton</h3>
 
-<div align="center">
-  [![License](https://img.shields.io/badge/license-GPL-blue.svg)](/LICENSE)
-</div>
-
 ---
 
 <p align="center">

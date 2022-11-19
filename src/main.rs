@@ -6,6 +6,7 @@ struct Progress<Iter> {
     iter: Iter,
     i: usize,
     bound: Option<usize>,
+    delims: (char, char),
 }
 
 impl<Iter> Progress<Iter> {
@@ -14,6 +15,7 @@ impl<Iter> Progress<Iter> {
             iter,
             i: 0,
             bound: None,
+            delims: ('[', ']'),
         }
     }
 }
@@ -36,7 +38,15 @@ where
     fn next(&mut self) -> Option<Self::Item> {
         println!("{}", CLEAR);
         match self.bound {
-            Some(bound) => println!("[{}{}]", "*".repeat(self.i), " ".repeat(bound - self.i)),
+            Some(bound) => {
+                println!(
+                    "{}{}{}{}",
+                    self.delims.0,
+                    "*".repeat(self.i),
+                    " ".repeat(bound - self.i),
+                    self.delims.1
+                )
+            }
             None => println!("{}", "*".repeat(self.i)),
         };
 
